@@ -1,0 +1,33 @@
+name: network
+description: "A professional network package with Dio, interceptors, error handling, and connectivity management for Flutter applications."
+version: 0.0.1
+resolution: workspace
+
+environment:
+  sdk: ^3.9.2
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # HTTP Client
+  dio: ^5.7.0
+
+  # Connectivity
+  connectivity_plus: ^6.1.1
+
+  # Logging
+  pretty_dio_logger: ^1.4.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+  # Testing
+  mocktail: ^1.0.4
+  http_mock_adapter: ^0.6.1
+
+  # Code Generation
+  build_runner: ^2.4.13

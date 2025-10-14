@@ -1,0 +1,30 @@
+name: flutter_modular_clean_architecture
+description: A new Flutter project demonstrating modular and clean architecture principles.
+workspace:
+  - packages/shared/network
+
+environment:
+  sdk: ^3.9.2
+
+dev_dependencies:
+  melos: ^7.1.1
+
+melos:
+  command:
+    bootstrap:
+      # It seems so that running "pub get" in parallel has some issues (like
+      # https://github.com/dart-lang/pub/issues/3404). Disabling this feature
+      # makes the CI much more stable.
+      runPubGetInParallel: false
+      
+  scripts:
+    test:
+      run: |
+        melos exec --fail-fast -- \
+          "flutter test"
+      description: Run `flutter test` for a specific package.
+      packageFilters:
+        dirExists:
+          - test
+        ignore:
+          - '*example*'
