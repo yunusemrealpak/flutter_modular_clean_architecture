@@ -1,0 +1,19 @@
+name: event_bus
+description: "Event bus infrastructure for feature-to-orchestrator communication using pub/sub pattern."
+version: 0.0.1
+resolution: workspace
+
+environment:
+  sdk: ^3.9.2
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  mocktail: ^1.0.4
+  build_runner: ^2.7.1
