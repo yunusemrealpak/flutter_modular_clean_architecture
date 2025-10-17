@@ -1,9 +1,19 @@
 name: flutter_modular_clean_architecture
 description: A new Flutter project demonstrating modular and clean architecture principles.
 workspace:
-  - packages/shared/network
-  - packages/shared/config
+  - packages/infrastructure/network
+  - packages/infrastructure/event_bus
+ 
+  - packages/features/home
+  - packages/features/profile
   - packages/features/auth
+  - packages/features/app_shell
+
+  - packages/shared/assets
+  - packages/shared/config
+  - packages/shared/core
+  
+  - app/root
 
 environment:
   sdk: ^3.9.2
@@ -12,13 +22,19 @@ dev_dependencies:
   melos: ^7.1.1
 
 melos:
+  categories:
+    features:
+      - packages/features/*
+    infrastructure:
+      - packages/infrastructure/*
+    shared:
+      - packages/shared/*
   command:
     bootstrap:
       # It seems so that running "pub get" in parallel has some issues (like
       # https://github.com/dart-lang/pub/issues/3404). Disabling this feature
       # makes the CI much more stable.
       runPubGetInParallel: false
-      
   scripts:
     codegen:
       run: |
@@ -40,6 +56,14 @@ melos:
           - build_runner
         dirExists:
           - lib
+    add:devs:
+      run: melos run dev_dependencies && melos bs
+    
+    dev_dependencies:
+      run: |
+        melos exec --category="features" --fail-fast -- \
+          "flutter pub add -d build_runner freezed json_serializable injectable_generator auto_route_generator"
+      description: Run `flutter pub get` for all packages.
     test:
       run: |
         melos exec --fail-fast -- \
