@@ -15,16 +15,13 @@ class AuthenticationSuccessEvent extends NavigationEvent {
   final String? userId;
   final bool isFirstLogin;
 
-  const AuthenticationSuccessEvent({
-    this.userId,
-    this.isFirstLogin = false,
-  });
+  const AuthenticationSuccessEvent({this.userId, this.isFirstLogin = false});
 
   @override
   Map<String, dynamic>? get payload => {
-        'user_id': userId,
-        'is_first_login': isFirstLogin,
-      };
+    'user_id': userId,
+    'is_first_login': isFirstLogin,
+  };
 }
 
 /// Event fired when user logs out
@@ -38,9 +35,7 @@ class LogoutSuccessEvent extends NavigationEvent {
   const LogoutSuccessEvent({this.reason});
 
   @override
-  Map<String, dynamic>? get payload => {
-        'reason': reason,
-      };
+  Map<String, dynamic>? get payload => {'reason': reason};
 }
 
 /// Event fired when session expires
@@ -68,9 +63,9 @@ class ProfileCompletionRequiredEvent extends NavigationEvent {
 
   @override
   Map<String, dynamic>? get payload => {
-        'user_id': userId,
-        'missing_fields': missingFields,
-      };
+    'user_id': userId,
+    'missing_fields': missingFields,
+  };
 }
 
 /// Event fired when user registration is successful
@@ -91,10 +86,10 @@ class RegistrationSuccessEvent extends NavigationEvent {
 
   @override
   Map<String, dynamic>? get payload => {
-        'user_id': userId,
-        'email': email,
-        'requires_email_verification': requiresEmailVerification,
-      };
+    'user_id': userId,
+    'email': email,
+    'requires_email_verification': requiresEmailVerification,
+  };
 }
 
 /// Event fired when unauthorized access is detected
@@ -108,9 +103,7 @@ class UnauthorizedAccessEvent extends NavigationEvent {
   const UnauthorizedAccessEvent({this.message});
 
   @override
-  Map<String, dynamic>? get payload => {
-        'message': message,
-      };
+  Map<String, dynamic>? get payload => {'message': message};
 }
 
 /// Event fired when navigation to a specific feature is requested
@@ -134,11 +127,11 @@ class NavigateToFeatureEvent extends NavigationEvent {
 
   @override
   Map<String, dynamic>? get payload => {
-        'feature_name': featureName,
-        'route': route,
-        'arguments': arguments,
-        'replace': replace,
-      };
+    'feature_name': featureName,
+    'route': route,
+    'arguments': arguments,
+    'replace': replace,
+  };
 }
 
 /// Event fired to pop current route
@@ -152,7 +145,19 @@ class PopRouteEvent extends NavigationEvent {
   const PopRouteEvent({this.result});
 
   @override
-  Map<String, dynamic>? get payload => {
-        'result': result,
-      };
+  Map<String, dynamic>? get payload => {'result': result};
+}
+
+/// Event fired to change bottom navigation index
+/// App Shell feature updates bottom navigation state
+class ChangeBottomNavIndexEvent extends NavigationEvent {
+  @override
+  String get eventName => 'change_bottom_nav_index';
+
+  final int newIndex;
+
+  const ChangeBottomNavIndexEvent({required this.newIndex});
+
+  @override
+  Map<String, dynamic>? get payload => {'new_index': newIndex};
 }
