@@ -10,11 +10,30 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  auto_route: ^10.1.2
+  get_it: ^8.2.0
+  injectable: ^2.5.2
+  flutter_bloc: ^9.1.1
+
+  # Internal dependencies
+  auth:
+    path: ../../packages/features/auth
+  app_shell:
+    path: ../../packages/features/app_shell
+  home:
+    path: ../../packages/features/home
+  profile:
+    path: ../../packages/features/profile
+  event_bus:
+    path: ../../packages/infrastructure/event_bus
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  auto_route_generator: ^10.2.4
   flutter_lints: ^5.0.0
+  build_runner: ^2.7.1
+  injectable_generator: ^2.6.2
 
 flutter:
   uses-material-design: true
