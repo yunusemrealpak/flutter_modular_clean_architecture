@@ -56,6 +56,9 @@ melos:
           - build_runner
         dirExists:
           - lib
+    codegen:all:
+      run: melos run codegen --no-select
+      description: Run code generation for all packages with no selection.
     add:devs:
       run: melos run dev_dependencies && melos bs
     
