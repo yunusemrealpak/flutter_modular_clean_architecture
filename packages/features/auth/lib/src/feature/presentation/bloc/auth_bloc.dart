@@ -1,6 +1,5 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:injectable/injectable.dart';
+import 'package:core/core.dart';
+import 'package:session/session.dart';
 
 import '../../domain/entities/auth_token_entity.dart';
 import '../../domain/entities/user_entity.dart';
@@ -47,10 +46,15 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       LoginParams(email: event.email, password: event.password),
     );
 
-    result.fold(
-      (failure) => emit(AuthState.error(failure.message)),
-      (token) => emit(AuthState.authenticated(token)),
-    );
+    result.fold((failure) => emit(AuthState.error(failure.message)), (token) {
+      di<SessionBloc>().add(
+        SessionEvent.login(
+          user: UserSession(id: "1", email: "email", name: "name"),
+          accessToken: token.accessToken,
+        ),
+      );
+      emit(AuthState.authenticated(token));
+    });
   }
 
   Future<void> _onRegister(

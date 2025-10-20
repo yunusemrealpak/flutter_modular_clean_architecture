@@ -18,6 +18,8 @@ dependencies:
     path: ../../shared/core
   config:
     path: ../../shared/config
+  session:
+    path: ../../shared/session
 
   ## Infrastructure
   storage:
