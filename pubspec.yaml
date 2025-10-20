@@ -3,6 +3,7 @@ description: A new Flutter project demonstrating modular and clean architecture 
 workspace:
   - packages/infrastructure/network
   - packages/infrastructure/event_bus
+  - packages/infrastructure/storage
  
   - packages/features/home
   - packages/features/profile
