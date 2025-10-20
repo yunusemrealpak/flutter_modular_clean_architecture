@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:root/core/di/injection_container.dart';
 import 'package:root/core/route/app_router.dart';
+import 'package:storage/storage.dart';
 
 final appRouter = AppRouter();
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await configureDependencies();
+  await StorageService.I.initialize();
   runApp(const MainApp());
 }
 

@@ -10,8 +10,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  objectbox: ^5.0.0
+  path_provider: ^2.1.5
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  build_runner: any
   flutter_lints: ^5.0.0
+  objectbox_generator: any

@@ -16,6 +16,8 @@ dependencies:
   flutter_bloc: ^9.1.1
 
   # Internal dependencies
+
+  ## Features
   auth:
     path: ../../packages/features/auth
   app_shell:
@@ -24,6 +26,10 @@ dependencies:
     path: ../../packages/features/home
   profile:
     path: ../../packages/features/profile
+
+  ## Infrastructure
+  storage:
+    path: ../../packages/infrastructure/storage
   event_bus:
     path: ../../packages/infrastructure/event_bus
 
