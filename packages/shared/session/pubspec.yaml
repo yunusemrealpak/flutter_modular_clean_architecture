@@ -1,0 +1,35 @@
+name: session
+description: Simple in-memory session management with BLoC pattern
+version: 1.0.0
+publish_to: 'none'
+resolution: workspace
+
+environment:
+  sdk: ^3.9.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Internal packages
+
+  ## Shared
+  core:
+    path: ../../shared/core
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # Code Generation
+  build_runner: any
+  freezed: any
+
+  # DI Generator
+  injectable_generator: any
+
+  # Linting
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true

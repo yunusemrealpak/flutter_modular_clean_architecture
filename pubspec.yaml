@@ -13,6 +13,7 @@ workspace:
   - packages/shared/assets
   - packages/shared/config
   - packages/shared/core
+  - packages/shared/session
   
   - app/root
 
