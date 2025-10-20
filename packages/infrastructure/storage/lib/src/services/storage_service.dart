@@ -22,7 +22,10 @@ class StorageService {
     final dir =
         directoryPath ?? (await getApplicationDocumentsDirectory()).path;
 
-    _store = openStore(directory: '$dir/db', macosApplicationGroup: 'db.app');
+    _store = await openStore(
+      directory: '$dir/db',
+      macosApplicationGroup: 'db.app',
+    );
   }
 
   /// Store instance'ını döndürür
