@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:storage/storage.dart';
 
 import '../../domain/entities/auth_token_entity.dart';
 
@@ -20,6 +21,16 @@ class AuthTokenModel {
       tokenType: data.tokenType,
       expiresIn: data.expiresIn,
       issuedAt: data.issuedAt,
+    );
+  }
+
+  // Convert to DbModel
+  AuthTokenDbModel toDbModel() {
+    return AuthTokenDbModel(
+      accessToken: data.accessToken,
+      issuedAt: data.issuedAt,
+      expiresIn: data.expiresIn,
+      refreshToken: data.refreshToken,
     );
   }
 

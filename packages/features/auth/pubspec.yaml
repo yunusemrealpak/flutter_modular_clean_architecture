@@ -12,12 +12,18 @@ dependencies:
   flutter:
     sdk: flutter
   # Internal packages
+
+  ## Shared
   core:
     path: ../../shared/core
-  network:
-    path: ../../infrastructure/network
   config:
     path: ../../shared/config
+
+  ## Infrastructure
+  storage:
+    path: ../../infrastructure/storage
+  network:
+    path: ../../infrastructure/network
   event_bus:
     path: ../../infrastructure/event_bus
 

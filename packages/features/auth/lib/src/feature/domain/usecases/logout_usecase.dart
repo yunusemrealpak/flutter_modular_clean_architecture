@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:event_bus/event_bus.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../core/errors/failures.dart';
+import '../../../core/errors/failures.dart';
 import '../repositories/auth_repository.dart';
 import 'base_usecase.dart';
 

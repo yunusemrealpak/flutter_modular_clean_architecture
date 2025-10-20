@@ -3,7 +3,7 @@ import 'package:event_bus/event_bus.dart';
 import 'package:injectable/injectable.dart';
 import 'package:network/network.dart';
 
-import '../../core/errors/failures.dart';
+import '../../../core/errors/failures.dart';
 import '../../domain/entities/auth_token_entity.dart';
 import '../../domain/entities/user_entity.dart';
 import '../../domain/repositories/auth_repository.dart';

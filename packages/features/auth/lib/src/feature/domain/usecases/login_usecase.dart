@@ -3,19 +3,19 @@ import 'package:equatable/equatable.dart';
 import 'package:event_bus/event_bus.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../core/errors/failures.dart';
+import '../../../core/errors/failures.dart';
 import '../entities/auth_token_entity.dart';
 import '../repositories/auth_repository.dart';
 import 'base_usecase.dart';
 
 @injectable
-class RegisterUseCase implements UseCase<AuthTokenEntity, RegisterParams> {
+class LoginUseCase implements UseCase<AuthTokenEntity, LoginParams> {
   final AuthRepository repository;
 
-  RegisterUseCase(this.repository);
+  LoginUseCase(this.repository);
 
   @override
-  Future<Either<Failure, AuthTokenEntity>> call(RegisterParams params) async {
+  Future<Either<Failure, AuthTokenEntity>> call(LoginParams params) async {
     // Validate email
     if (!_isEmailValid(params.email)) {
       return const Left(
@@ -36,34 +36,21 @@ class RegisterUseCase implements UseCase<AuthTokenEntity, RegisterParams> {
       );
     }
 
-    // Validate name
-    if (params.name.trim().isEmpty) {
-      return const Left(
-        ValidationFailure(
-          message: 'Name cannot be empty',
-          code: 'INVALID_NAME',
-        ),
-      );
-    }
-
-    // Call repository to perform registration
-    final result = await repository.register(
+    // Call repository to perform login
+    final result = await repository.login(
       email: params.email,
       password: params.password,
-      name: params.name,
     );
 
     // If successful, publish event for orchestrator
     result.fold(
       (failure) => null, // Do nothing on failure
       (token) {
-        // Feature says: "registration successful"
-        // Orchestrator decides where to navigate (email verification, home, etc.)
+        // Feature says: "authentication successful"
+        // Orchestrator decides where to navigate
         EventBus.I.publish(
-          RegistrationSuccessEvent(
-            userId: token.accessToken,
-            email: params.email,
-            requiresEmailVerification: false, // TODO: Determine from response
+          const AuthenticationSuccessEvent(
+            isFirstLogin: false, // TODO: Determine from token or user data
           ),
         );
       },
@@ -87,18 +74,13 @@ class RegisterUseCase implements UseCase<AuthTokenEntity, RegisterParams> {
   }
 }
 
-/// Register parameters
-class RegisterParams extends Equatable {
+/// Login parameters
+class LoginParams extends Equatable {
   final String email;
   final String password;
-  final String name;
 
-  const RegisterParams({
-    required this.email,
-    required this.password,
-    required this.name,
-  });
+  const LoginParams({required this.email, required this.password});
 
   @override
-  List<Object?> get props => [email, password, name];
+  List<Object?> get props => [email, password];
 }
