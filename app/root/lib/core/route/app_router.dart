@@ -1,7 +1,6 @@
 import 'package:app_shell/app_shell.dart';
 import 'package:auth/auth.dart';
-import 'package:auto_route/auto_route.dart';
-import 'package:home/core/route/home_router.gr.dart';
+import 'package:core/core.dart';
 import 'package:profile/core/route/profile_router.gr.dart';
 import 'package:root/core/route/app_routes.dart';
 

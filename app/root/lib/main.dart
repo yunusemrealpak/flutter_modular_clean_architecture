@@ -1,9 +1,10 @@
 import 'package:app_shell/app_shell.dart';
 import 'package:auth/auth.dart';
+import 'package:core/core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:root/core/di/injection_container.dart';
 import 'package:root/core/route/app_router.dart';
+import 'package:session/session.dart';
 import 'package:storage/storage.dart';
 
 final appRouter = AppRouter();
@@ -24,6 +25,7 @@ class MainApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => di<AuthBloc>(), lazy: false),
         BlocProvider(create: (context) => di<AppBloc>()),
+        BlocProvider(create: (context) => di<SessionBloc>()),
       ],
       child: MaterialApp.router(
         routerConfig: appRouter.config(),

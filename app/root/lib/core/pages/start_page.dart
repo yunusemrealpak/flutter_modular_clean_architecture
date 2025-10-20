@@ -1,8 +1,7 @@
-import 'package:auto_route/auto_route.dart';
+import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:profile/core/profile_usecase.dart';
 import 'package:profile/core/route/profile_router.gr.dart';
-import 'package:root/core/di/injection_container.dart';
 
 @RoutePage()
 class StartPage extends StatefulWidget {

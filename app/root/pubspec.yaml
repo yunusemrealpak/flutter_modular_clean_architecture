@@ -10,10 +10,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  auto_route: ^10.1.2
-  get_it: ^8.2.0
-  injectable: ^2.5.2
-  flutter_bloc: ^9.1.1
 
   # Internal dependencies
 
@@ -32,6 +28,12 @@ dependencies:
     path: ../../packages/infrastructure/storage
   event_bus:
     path: ../../packages/infrastructure/event_bus
+
+  ## Shared
+  core:
+    path: ../../packages/shared/core
+  session:
+    path: ../../packages/shared/session
 
 dev_dependencies:
   flutter_test:
