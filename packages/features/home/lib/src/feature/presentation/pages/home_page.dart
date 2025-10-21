@@ -24,27 +24,39 @@ class _HomePageState extends State<HomePage> {
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(title: const Text('Home Page')),
-          body: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text('Welcome to the Home Page!'),
-              SizedBox(height: 20),
+          body: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text('Welcome to the Home Page!'),
+                SizedBox(height: 20),
 
-              state.maybeMap(
-                orElse: () => Container(),
-                authenticated: (authState) {
-                  return Text('Hello, ${authState.session.user?.name}!');
-                },
-                unauthenticated: (_) {
-                  return ElevatedButton(
-                    onPressed: () {
-                      EventBus.I.publish(LogoutSuccessEvent());
-                    },
-                    child: const Text('Login'),
-                  );
-                },
-              ),
-            ],
+                state.maybeMap(
+                  orElse: () => Container(),
+                  authenticated: (authState) {
+                    return Column(
+                      children: [
+                        Text('Hello, ${authState.session.accessToken}!'),
+                        ElevatedButton(
+                          onPressed: () {
+                            //EventBus.I.publish(LogoutSuccessEvent());
+                          },
+                          child: const Text('Logout'),
+                        ),
+                      ],
+                    );
+                  },
+                  unauthenticated: (_) {
+                    return ElevatedButton(
+                      onPressed: () {
+                        EventBus.I.publish(LogoutSuccessEvent());
+                      },
+                      child: const Text('Login'),
+                    );
+                  },
+                ),
+              ],
+            ),
           ),
         );
       },
