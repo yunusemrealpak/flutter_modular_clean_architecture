@@ -30,4 +30,4 @@ dev_dependencies:
   http_mock_adapter: ^0.6.1
 
   # Code Generation
-  build_runner: ^2.7.1
+  build_runner: any

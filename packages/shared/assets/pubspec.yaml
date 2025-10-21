@@ -16,7 +16,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
-  build_runner:
+  build_runner: any
   flutter_gen_runner: ^5.12.0
 
 flutter:
