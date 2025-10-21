@@ -1,6 +1,6 @@
 // DI
-export 'src/di/injection.module.dart';
-export 'src/domain/models/session_data.dart';
-export 'src/domain/models/user_session.dart';
+export 'src/core/di/injection.module.dart';
+export 'src/feature/domain/entity/session_data.dart';
+export 'src/feature/domain/entity/user_session.dart';
 // Presentation - BLoC
-export 'src/presentation/bloc/session_bloc.dart';
+export 'src/feature/presentation/bloc/session_bloc.dart';

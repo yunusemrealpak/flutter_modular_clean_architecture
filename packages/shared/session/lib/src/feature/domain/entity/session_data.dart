@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:session/src/domain/models/user_session.dart';
+import 'package:session/src/feature/domain/entity/user_session.dart';
 
 part 'session_data.freezed.dart';
 

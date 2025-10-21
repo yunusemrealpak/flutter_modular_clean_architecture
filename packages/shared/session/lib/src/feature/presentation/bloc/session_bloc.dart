@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:session/src/domain/models/session_data.dart';
-import 'package:session/src/domain/models/user_session.dart';
+import 'package:session/src/feature/domain/entity/session_data.dart';
+import 'package:session/src/feature/domain/entity/user_session.dart';
 
 part 'session_bloc.freezed.dart';
 part 'session_event.dart';
@@ -19,10 +19,8 @@ class SessionBloc extends Bloc<SessionEvent, SessionState> {
   }
 
   // Current session data (cached for easy access)
-  SessionData? get currentSession => state.maybeWhen(
-        authenticated: (session) => session,
-        orElse: () => null,
-      );
+  SessionData? get currentSession =>
+      state.maybeWhen(authenticated: (session) => session, orElse: () => null);
 
   // Current user (helper getter)
   UserSession? get currentUser => currentSession?.user;
@@ -31,10 +29,8 @@ class SessionBloc extends Bloc<SessionEvent, SessionState> {
   String? get accessToken => currentSession?.accessToken;
 
   // Authentication status (helper getter)
-  bool get isAuthenticated => state.maybeWhen(
-        authenticated: (_) => true,
-        orElse: () => false,
-      );
+  bool get isAuthenticated =>
+      state.maybeWhen(authenticated: (_) => true, orElse: () => false);
 
   Future<void> _onLogin(
     SessionEventLogin event,

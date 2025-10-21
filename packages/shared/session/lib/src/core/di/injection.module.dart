@@ -7,10 +7,11 @@
 import 'dart:async' as _i687;
 
 import 'package:injectable/injectable.dart' as _i526;
-import 'package:session/src/presentation/bloc/session_bloc.dart' as _i32;
+import 'package:session/src/feature/presentation/bloc/session_bloc.dart'
+    as _i32;
 
 class SessionPackageModule extends _i526.MicroPackageModule {
-// initializes the registration of main-scope dependencies inside of GetIt
+  // initializes the registration of main-scope dependencies inside of GetIt
   @override
   _i687.FutureOr<void> init(_i526.GetItHelper gh) {
     gh.lazySingleton<_i32.SessionBloc>(() => _i32.SessionBloc());
