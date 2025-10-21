@@ -7,7 +7,6 @@
 import 'dart:async' as _i687;
 
 import 'package:auth/auth.dart' as _i662;
-import 'package:auth/src/core/di/auth_module.dart' as _i422;
 import 'package:auth/src/feature/data/datasources/auth_local_datasource.dart'
     as _i166;
 import 'package:auth/src/feature/data/datasources/auth_remote_datasource.dart'
@@ -33,11 +32,6 @@ class AuthPackageModule extends _i526.MicroPackageModule {
 // initializes the registration of main-scope dependencies inside of GetIt
   @override
   _i687.FutureOr<void> init(_i526.GetItHelper gh) {
-    final authModule = _$AuthModule();
-    gh.singleton<_i372.NetworkInfo>(() => authModule.networkInfo);
-    gh.lazySingleton<_i372.HttpClient>(() => authModule.httpClient);
-    gh.lazySingleton<_i431.StorageHelper<_i431.AuthTokenDbModel>>(
-        () => authModule.storageHelper);
     gh.lazySingleton<_i166.AuthLocalDataSource>(() =>
         _i166.AuthLocalDataSourceImpl(
             gh<_i431.StorageHelper<_i431.AuthTokenDbModel>>()));
@@ -67,5 +61,3 @@ class AuthPackageModule extends _i526.MicroPackageModule {
         ));
   }
 }
-
-class _$AuthModule extends _i422.AuthModule {}
