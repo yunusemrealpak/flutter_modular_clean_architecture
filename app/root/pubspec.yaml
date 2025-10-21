@@ -40,7 +40,7 @@ dev_dependencies:
     sdk: flutter
   auto_route_generator: ^10.2.4
   flutter_lints: ^5.0.0
-  build_runner: ^2.7.1
+  build_runner: any
   injectable_generator: ^2.6.2
 
 flutter:
