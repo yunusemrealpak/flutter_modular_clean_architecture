@@ -15,6 +15,7 @@ import 'package:objectbox/objectbox.dart' as obx;
 import 'package:objectbox_flutter_libs/objectbox_flutter_libs.dart';
 
 import 'src/models/auth/auth_token_db_model.dart';
+import 'src/models/settings/settings_db_model.dart';
 
 export 'package:objectbox/objectbox.dart'; // so that callers only have to import this file
 
@@ -53,6 +54,28 @@ final _entities = <obx_int.ModelEntity>[
         id: const obx_int.IdUid(7, 3423645180672015746),
         name: 'expiresIn',
         type: 6,
+        flags: 0,
+      ),
+    ],
+    relations: <obx_int.ModelRelation>[],
+    backlinks: <obx_int.ModelBacklink>[],
+  ),
+  obx_int.ModelEntity(
+    id: const obx_int.IdUid(2, 2585270639555560155),
+    name: 'SettingsDbModel',
+    lastPropertyId: const obx_int.IdUid(2, 3208359665074233720),
+    flags: 0,
+    properties: <obx_int.ModelProperty>[
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(1, 1753892141565787314),
+        name: 'id',
+        type: 6,
+        flags: 1,
+      ),
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(2, 3208359665074233720),
+        name: 'themeMode',
+        type: 9,
         flags: 0,
       ),
     ],
@@ -99,7 +122,7 @@ Future<obx.Store> openStore({
 obx_int.ModelDefinition getObjectBoxModel() {
   final model = obx_int.ModelInfo(
     entities: _entities,
-    lastEntityId: const obx_int.IdUid(1, 2712729777245706162),
+    lastEntityId: const obx_int.IdUid(2, 2585270639555560155),
     lastIndexId: const obx_int.IdUid(0, 0),
     lastRelationId: const obx_int.IdUid(0, 0),
     lastSequenceId: const obx_int.IdUid(0, 0),
@@ -161,6 +184,34 @@ obx_int.ModelDefinition getObjectBoxModel() {
         return object;
       },
     ),
+    SettingsDbModel: obx_int.EntityDefinition<SettingsDbModel>(
+      model: _entities[1],
+      toOneRelations: (SettingsDbModel object) => [],
+      toManyRelations: (SettingsDbModel object) => {},
+      getId: (SettingsDbModel object) => object.id,
+      setId: (SettingsDbModel object, int id) {
+        object.id = id;
+      },
+      objectToFB: (SettingsDbModel object, fb.Builder fbb) {
+        final themeModeOffset = fbb.writeString(object.themeMode);
+        fbb.startTable(3);
+        fbb.addInt64(0, object.id);
+        fbb.addOffset(1, themeModeOffset);
+        fbb.finish(fbb.endTable());
+        return object.id;
+      },
+      objectFromFB: (obx.Store store, ByteData fbData) {
+        final buffer = fb.BufferContext(fbData);
+        final rootOffset = buffer.derefObject(0);
+        final themeModeParam = const fb.StringReader(
+          asciiOptimization: true,
+        ).vTableGet(buffer, rootOffset, 6, '');
+        final object = SettingsDbModel(themeMode: themeModeParam)
+          ..id = const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0);
+
+        return object;
+      },
+    ),
   };
 
   return obx_int.ModelDefinition(model, bindings);
@@ -191,5 +242,18 @@ class AuthTokenDbModel_ {
   /// See [AuthTokenDbModel.expiresIn].
   static final expiresIn = obx.QueryIntegerProperty<AuthTokenDbModel>(
     _entities[0].properties[4],
+  );
+}
+
+/// [SettingsDbModel] entity fields to define ObjectBox queries.
+class SettingsDbModel_ {
+  /// See [SettingsDbModel.id].
+  static final id = obx.QueryIntegerProperty<SettingsDbModel>(
+    _entities[1].properties[0],
+  );
+
+  /// See [SettingsDbModel.themeMode].
+  static final themeMode = obx.QueryStringProperty<SettingsDbModel>(
+    _entities[1].properties[1],
   );
 }
