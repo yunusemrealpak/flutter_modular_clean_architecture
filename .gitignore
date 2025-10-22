@@ -25,3 +25,21 @@
 .idea/runConfigurations/melos_run_dev_dependencies.xml
 .idea/runConfigurations/melos_run_test.xml
 pubspec.lock
+packages/infrastructure/event_bus/.dart_tool/build/entrypoint/.packageLocations
+packages/infrastructure/event_bus/.dart_tool/build/entrypoint/build.dart.dill
+packages/infrastructure/event_bus/.dart_tool/build/fcd1995bc647fb959e82ea360c6c2c9a/asset_graph.json
+.idea/runConfigurations/melos_flutter_test_design_system.xml
+.idea/runConfigurations/melos_flutter_test_session.xml
+.idea/runConfigurations/melos_flutter_test_splash.xml
+.idea/runConfigurations/melos_flutter_test_storage.xml
+.idea/runConfigurations/melos_flutter_test_theming.xml
+.idea/runConfigurations/melos_run_codegen_all.xml
+
+# Flutter/Dart/Pub related
+.dart_tool/
+
+# Generated Files
+*.g.dart
+*.freezed.dart
+*.mocks.dart
+*.config.dart
