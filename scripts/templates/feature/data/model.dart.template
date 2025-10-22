@@ -1,0 +1,64 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+import '../../domain/entities/example_entity.dart';
+
+part 'example_model.freezed.dart';
+part 'example_model.g.dart';
+
+/// Wrapper model for ExampleEntity
+///
+/// This model wraps the Freezed data class and provides
+/// conversion to/from domain entity.
+class ExampleModel {
+  final ExampleModelData data;
+
+  const ExampleModel({required this.data});
+
+  /// Convert from domain entity
+  factory ExampleModel.fromEntity(ExampleEntity entity) {
+    return ExampleModel(
+      data: ExampleModelData(
+        id: entity.id,
+        name: entity.name,
+        description: entity.description,
+        createdAt: entity.createdAt.toIso8601String(),
+        updatedAt: entity.updatedAt?.toIso8601String(),
+      ),
+    );
+  }
+
+  /// Convert to domain entity
+  ExampleEntity toEntity() {
+    return ExampleEntity(
+      id: data.id,
+      name: data.name,
+      description: data.description,
+      createdAt: DateTime.parse(data.createdAt),
+      updatedAt:
+          data.updatedAt != null ? DateTime.parse(data.updatedAt!) : null,
+    );
+  }
+
+  /// Create from JSON
+  factory ExampleModel.fromJson(Map<String, dynamic> json) {
+    return ExampleModel(data: ExampleModelData.fromJson(json));
+  }
+
+  /// Convert to JSON
+  Map<String, dynamic> toJson() => data.toJson();
+}
+
+/// Freezed data class for JSON serialization
+@freezed
+class ExampleModelData with _$ExampleModelData {
+  const factory ExampleModelData({
+    required String id,
+    required String name,
+    required String description,
+    required String createdAt,
+    String? updatedAt,
+  }) = _ExampleModelData;
+
+  factory ExampleModelData.fromJson(Map<String, dynamic> json) =>
+      _$ExampleModelDataFromJson(json);
+}

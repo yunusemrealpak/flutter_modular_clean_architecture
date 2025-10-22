@@ -1,0 +1,5 @@
+import 'package:core/core.dart';
+
+class {{PACKAGE_NAME_PASCAL}}Failure extends Failure {
+  const {{PACKAGE_NAME_PASCAL}}Failure({required super.message, super.code});
+}

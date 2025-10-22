@@ -1,0 +1,23 @@
+part of '{{PACKAGE_NAME}}_bloc.dart';
+
+/// States for {{PACKAGE_NAME_PASCAL}} BLoC
+@freezed
+class {{PACKAGE_NAME_PASCAL}}State with _${{PACKAGE_NAME_PASCAL}}State {
+  /// Initial state
+  const factory {{PACKAGE_NAME_PASCAL}}State.initial() = {{PACKAGE_NAME_PASCAL}}StateInitial;
+
+  /// Loading state
+  const factory {{PACKAGE_NAME_PASCAL}}State.loading() = {{PACKAGE_NAME_PASCAL}}StateLoading;
+
+  /// Loaded state with data
+  const factory {{PACKAGE_NAME_PASCAL}}State.loaded(ExampleEntity data) =
+      {{PACKAGE_NAME_PASCAL}}StateLoaded;
+
+  /// Error state with message
+  const factory {{PACKAGE_NAME_PASCAL}}State.error(String message) =
+      {{PACKAGE_NAME_PASCAL}}StateError;
+
+  /// TODO: Add more states as needed
+  /// Example states:
+  /// const factory {{PACKAGE_NAME_PASCAL}}State.deleteSuccess() = {{PACKAGE_NAME_PASCAL}}StateDeleteSuccess;
+}

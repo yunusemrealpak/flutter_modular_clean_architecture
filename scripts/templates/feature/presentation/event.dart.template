@@ -1,0 +1,14 @@
+part of '{{PACKAGE_NAME}}_bloc.dart';
+
+/// Events for {{PACKAGE_NAME_PASCAL}} BLoC
+@freezed
+abstract class {{PACKAGE_NAME_PASCAL}}Event with _${{PACKAGE_NAME_PASCAL}}Event {
+  /// Load data event
+  const factory {{PACKAGE_NAME_PASCAL}}Event.loadData({required String id}) =
+      {{PACKAGE_NAME_PASCAL}}EventLoadData;
+
+  /// TODO: Add more events as needed
+  /// Example events:
+  /// const factory {{PACKAGE_NAME_PASCAL}}Event.refresh() = {{PACKAGE_NAME_PASCAL}}EventRefresh;
+  /// const factory {{PACKAGE_NAME_PASCAL}}Event.delete({required String id}) = {{PACKAGE_NAME_PASCAL}}EventDelete;
+}

@@ -1,0 +1,44 @@
+import 'package:core/core.dart';
+import 'package:dartz/dartz.dart';
+
+import '../entities/example_entity.dart';
+
+/// Repository interface for {{PACKAGE_NAME_PASCAL}} feature
+///
+/// This interface defines the contract for data operations.
+/// Implementation will be in the data layer.
+abstract class ExampleRepository {
+  /// Fetch example data by ID
+  ///
+  /// Returns [Right(ExampleEntity)] on success
+  /// Returns [Left(Failure)] on error
+  Future<Either<Failure, ExampleEntity>> getExampleData(String id);
+
+  /// Fetch all example data
+  ///
+  /// Returns [Right(List<ExampleEntity>)] on success
+  /// Returns [Left(Failure)] on error
+  Future<Either<Failure, List<ExampleEntity>>> getAllExampleData();
+
+  /// Create new example data
+  ///
+  /// Returns [Right(ExampleEntity)] on success
+  /// Returns [Left(Failure)] on error
+  Future<Either<Failure, ExampleEntity>> createExampleData(
+    ExampleEntity entity,
+  );
+
+  /// Update existing example data
+  ///
+  /// Returns [Right(ExampleEntity)] on success
+  /// Returns [Left(Failure)] on error
+  Future<Either<Failure, ExampleEntity>> updateExampleData(
+    ExampleEntity entity,
+  );
+
+  /// Delete example data by ID
+  ///
+  /// Returns [Right(void)] on success
+  /// Returns [Left(Failure)] on error
+  Future<Either<Failure, void>> deleteExampleData(String id);
+}

@@ -135,3 +135,58 @@ confirm_action() {
 
     return 1
 }
+
+# Function to process template file
+# Replaces placeholders with actual values
+# Usage: process_template "template_file" "PACKAGE_NAME=my_package" "PACKAGE_NAME_PASCAL=MyPackage" ...
+process_template() {
+    local template_file="$1"
+    shift
+    local content
+
+    # Read template content
+    if [ ! -f "$template_file" ]; then
+        print_error "Template file not found: $template_file"
+        return 1
+    fi
+
+    content=$(cat "$template_file")
+
+    # Replace each placeholder
+    while [ $# -gt 0 ]; do
+        local pair="$1"
+        local key="${pair%%=*}"
+        local value="${pair#*=}"
+
+        # Replace {{KEY}} with value
+        content="${content//\{\{${key}\}\}/${value}}"
+
+        shift
+    done
+
+    echo "$content"
+}
+
+# Function to create file from template
+# Usage: create_from_template "template_file" "output_file" "PACKAGE_NAME=my_package" ...
+create_from_template() {
+    local template_file="$1"
+    local output_file="$2"
+    shift 2
+
+    local content
+    content=$(process_template "$template_file" "$@")
+
+    if [ $? -ne 0 ]; then
+        return 1
+    fi
+
+    # Create parent directory if needed
+    local output_dir=$(dirname "$output_file")
+    mkdir -p "$output_dir"
+
+    # Write content to file
+    echo "$content" > "$output_file"
+
+    return 0
+}
