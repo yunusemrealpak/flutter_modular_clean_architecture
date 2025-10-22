@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:auth/auth.dart';
+import 'package:core/core.dart';
 import 'package:event_bus/event_bus.dart';
 import 'package:home/src/core/route/home_router.gr.dart';
-import 'package:injectable/injectable.dart';
 import 'package:root/main.dart';
 
 @singleton

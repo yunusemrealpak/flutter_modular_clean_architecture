@@ -14,9 +14,13 @@ import 'package:auth/auth.dart' as _i662;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:home/home.dart' as _i1024;
 import 'package:injectable/injectable.dart' as _i526;
+import 'package:network/network.dart' as _i372;
 import 'package:profile/core/di/injection.module.dart' as _i176;
+import 'package:root/core/di/injection_module.dart' as _i352;
 import 'package:root/core/event/app_event_listener.dart' as _i332;
 import 'package:session/session.dart' as _i332;
+import 'package:storage/storage.dart' as _i431;
+import 'package:theming/theming.dart' as _i370;
 
 extension GetItInjectableX on _i174.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -25,7 +29,17 @@ extension GetItInjectableX on _i174.GetIt {
     _i526.EnvironmentFilter? environmentFilter,
   }) async {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
+    await _i370.ThemingPackageModule().init(gh);
+    final injectionModule = _$InjectionModule();
+    gh.singleton<_i372.NetworkInfo>(() => injectionModule.networkInfo);
     gh.singleton<_i332.AppEventListener>(() => _i332.AppEventListener());
+    gh.lazySingleton<_i372.HttpClient>(() => injectionModule.httpClient);
+    gh.lazySingleton<_i431.StorageHelper<_i431.AuthTokenDbModel>>(
+      () => injectionModule.authStore,
+    );
+    gh.lazySingleton<_i431.StorageHelper<_i431.SettingsDbModel>>(
+      () => injectionModule.settingsStore,
+    );
     await _i1024.HomePackageModule().init(gh);
     await _i176.ProfilePackageModule().init(gh);
     await _i662.AuthPackageModule().init(gh);
@@ -34,3 +48,5 @@ extension GetItInjectableX on _i174.GetIt {
     return this;
   }
 }
+
+class _$InjectionModule extends _i352.InjectionModule {}

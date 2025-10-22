@@ -5,10 +5,12 @@ import 'package:home/home.dart';
 import 'package:profile/core/di/injection.module.dart';
 import 'package:root/core/di/injection_container.config.dart';
 import 'package:session/session.dart';
+import 'package:theming/theming.dart';
 
 final GetIt getIt = GetIt.I;
 
 @InjectableInit(
+  externalPackageModulesBefore: [ExternalModule(ThemingPackageModule)],
   externalPackageModulesAfter: [
     ExternalModule(HomePackageModule),
     ExternalModule(ProfilePackageModule),

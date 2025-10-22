@@ -1,11 +1,13 @@
 import 'package:app_shell/app_shell.dart';
 import 'package:auth/auth.dart';
 import 'package:core/core.dart';
+import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 import 'package:root/core/di/injection_container.dart';
 import 'package:root/core/route/app_router.dart';
 import 'package:session/session.dart';
 import 'package:storage/storage.dart';
+import 'package:theming/theming.dart';
 
 final appRouter = AppRouter();
 
@@ -27,11 +29,16 @@ class MainApp extends StatelessWidget {
         BlocProvider(create: (context) => di<AppBloc>()),
         BlocProvider(create: (context) => di<SessionBloc>()),
       ],
-      child: MaterialApp.router(
-        routerConfig: appRouter.config(),
-        debugShowCheckedModeBanner: false,
-        title: 'Flutter Modular Clean Architecture',
-        theme: ThemeData(primarySwatch: Colors.blue),
+      child: ValueListenableBuilder(
+        valueListenable: di<ThemeManager>().currentThemeMode,
+        builder: (context, themeMode, child) {
+          return MaterialApp.router(
+            routerConfig: appRouter.config(),
+            debugShowCheckedModeBanner: false,
+            title: 'Flutter Modular Clean Architecture',
+            theme: themeMode == ThemeMode.dark ? AppTheme.dark : AppTheme.light,
+          );
+        },
       ),
     );
   }

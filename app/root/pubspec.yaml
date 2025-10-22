@@ -28,12 +28,18 @@ dependencies:
     path: ../../packages/infrastructure/storage
   event_bus:
     path: ../../packages/infrastructure/event_bus
+  network:
+    path: ../../packages/infrastructure/network
 
   ## Shared
   core:
     path: ../../packages/shared/core
   session:
     path: ../../packages/shared/session
+  design_system:
+    path: ../../packages/shared/design_system
+  theming:
+    path: ../../packages/shared/theming
 
 dev_dependencies:
   flutter_test:
