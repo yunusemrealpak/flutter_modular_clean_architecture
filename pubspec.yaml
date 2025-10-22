@@ -9,11 +9,14 @@ workspace:
   - packages/features/profile
   - packages/features/auth
   - packages/features/app_shell
+  - packages/features/product
 
   - packages/shared/assets
   - packages/shared/config
   - packages/shared/core
   - packages/shared/session
+  - packages/shared/design_system
+  - packages/shared/theming
   
   - app/root
 
