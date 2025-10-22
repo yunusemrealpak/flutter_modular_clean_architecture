@@ -20,6 +20,8 @@ dependencies:
     path: ../../shared/config
   session:
     path: ../../shared/session
+  design_system:
+    path: ../../shared/design_system
 
   ## Infrastructure
   storage:

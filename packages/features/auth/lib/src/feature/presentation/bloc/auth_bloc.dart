@@ -1,9 +1,9 @@
 import 'package:core/core.dart';
+import 'package:event_bus/event_bus.dart';
 import 'package:session/session.dart';
 
 import '../../domain/entities/auth_token_entity.dart';
 import '../../domain/entities/user_entity.dart';
-import '../../domain/usecases/base_usecase.dart';
 import '../../domain/usecases/check_auth_status_usecase.dart';
 import '../../domain/usecases/get_current_user_usecase.dart';
 import '../../domain/usecases/login_usecase.dart';
@@ -53,6 +53,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           accessToken: token.accessToken,
         ),
       );
+      // Orchestrator decides where to navigate
+      EventBus.I.publish(
+        const AuthenticationSuccessEvent(
+          isFirstLogin: false, // TODO: Determine from token or user data
+        ),
+      );
       emit(AuthState.authenticated(token));
     });
   }
@@ -71,10 +77,18 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       ),
     );
 
-    result.fold(
-      (failure) => emit(AuthState.error(failure.message)),
-      (token) => emit(AuthState.authenticated(token)),
-    );
+    result.fold((failure) => emit(AuthState.error(failure.message)), (token) {
+      // Feature says: "registration successful"
+      // Orchestrator decides where to navigate (email verification, home, etc.)
+      EventBus.I.publish(
+        RegistrationSuccessEvent(
+          userId: token.accessToken,
+          email: event.email,
+          requiresEmailVerification: false, // TODO: Determine from response
+        ),
+      );
+      emit(AuthState.authenticated(token));
+    });
   }
 
   Future<void> _onLogout(AuthEventLogout event, Emitter<AuthState> emit) async {
@@ -82,10 +96,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     final result = await logoutUseCase(const NoParams());
 
-    result.fold(
-      (failure) => emit(AuthState.error(failure.message)),
-      (_) => emit(const AuthState.unauthenticated()),
-    );
+    result.fold((failure) => emit(AuthState.error(failure.message)), (_) {
+      // Feature says: "logout successful"
+      // Orchestrator decides where to navigate (clear data, go to login, etc.)
+      EventBus.I.publish(const LogoutSuccessEvent(reason: 'user_initiated'));
+      emit(const AuthState.unauthenticated());
+    });
   }
 
   Future<void> _onCheckStatus(

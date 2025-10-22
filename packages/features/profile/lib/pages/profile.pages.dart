@@ -1,7 +1,8 @@
 import 'package:core/core.dart';
+import 'package:design_system/design_system.dart';
 import 'package:event_bus/event_bus.dart';
 import 'package:flutter/material.dart';
-import 'package:profile/core/profile_usecase.dart';
+import 'package:theming/theming.dart';
 
 @RoutePage()
 class ProfilePage extends StatefulWidget {
@@ -12,19 +13,27 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  String title = 'Yükleniyor';
-
-  @override
-  void initState() {
-    super.initState();
-    title = di<ProfileUsecase>().title;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Profile Page')),
-      body: Center(child: Text(title)),
+      body: Center(
+        child: Column(
+          children: [
+            ValueListenableBuilder(
+              valueListenable: di<ThemeManager>().currentThemeMode,
+              builder: (context, themeMode, child) {
+                return AppThemeSwitchTile(
+                  currentTheme: themeMode,
+                  onThemeChanged: (newTheme) {
+                    di<ThemeManager>().setThemeMode(newTheme);
+                  },
+                );
+              },
+            ),
+          ],
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           EventBus.I.publish(ChangeBottomNavIndexEvent(newIndex: 0));

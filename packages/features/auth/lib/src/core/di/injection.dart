@@ -1,4 +1,4 @@
-import 'package:injectable/injectable.dart';
+import 'package:core/core.dart';
 
 @InjectableInit.microPackage()
 initMicroPackage() {}

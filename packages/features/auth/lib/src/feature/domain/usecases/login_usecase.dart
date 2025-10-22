@@ -1,15 +1,11 @@
-import 'package:dartz/dartz.dart';
-import 'package:equatable/equatable.dart';
-import 'package:event_bus/event_bus.dart';
-import 'package:injectable/injectable.dart';
+import 'package:core/core.dart';
 
 import '../../../core/errors/failures.dart';
 import '../entities/auth_token_entity.dart';
 import '../repositories/auth_repository.dart';
-import 'base_usecase.dart';
 
 @injectable
-class LoginUseCase implements UseCase<AuthTokenEntity, LoginParams> {
+class LoginUseCase implements UseCase<AuthTokenEntity, LoginParams, Failure> {
   final AuthRepository repository;
 
   LoginUseCase(this.repository);
@@ -47,12 +43,6 @@ class LoginUseCase implements UseCase<AuthTokenEntity, LoginParams> {
       (failure) => null, // Do nothing on failure
       (token) {
         // Feature says: "authentication successful"
-        // Orchestrator decides where to navigate
-        EventBus.I.publish(
-          const AuthenticationSuccessEvent(
-            isFirstLogin: false, // TODO: Determine from token or user data
-          ),
-        );
       },
     );
 

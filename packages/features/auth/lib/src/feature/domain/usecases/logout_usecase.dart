@@ -1,13 +1,10 @@
-import 'package:dartz/dartz.dart';
-import 'package:event_bus/event_bus.dart';
-import 'package:injectable/injectable.dart';
+import 'package:core/core.dart';
 
 import '../../../core/errors/failures.dart';
 import '../repositories/auth_repository.dart';
-import 'base_usecase.dart';
 
 @injectable
-class LogoutUseCase implements UseCase<Unit, NoParams> {
+class LogoutUseCase implements UseCase<Unit, NoParams, Failure> {
   final AuthRepository repository;
 
   LogoutUseCase(this.repository);
@@ -19,11 +16,7 @@ class LogoutUseCase implements UseCase<Unit, NoParams> {
     // If successful, publish event for orchestrator
     result.fold(
       (failure) => null, // Do nothing on failure
-      (unit) {
-        // Feature says: "logout successful"
-        // Orchestrator decides where to navigate (clear data, go to login, etc.)
-        EventBus.I.publish(const LogoutSuccessEvent(reason: 'user_initiated'));
-      },
+      (unit) => unit,
     );
 
     return result;

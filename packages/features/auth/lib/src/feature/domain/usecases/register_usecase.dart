@@ -1,15 +1,12 @@
-import 'package:dartz/dartz.dart';
-import 'package:equatable/equatable.dart';
-import 'package:event_bus/event_bus.dart';
-import 'package:injectable/injectable.dart';
+import 'package:core/core.dart';
 
 import '../../../core/errors/failures.dart';
 import '../entities/auth_token_entity.dart';
 import '../repositories/auth_repository.dart';
-import 'base_usecase.dart';
 
 @injectable
-class RegisterUseCase implements UseCase<AuthTokenEntity, RegisterParams> {
+class RegisterUseCase
+    implements UseCase<AuthTokenEntity, RegisterParams, Failure> {
   final AuthRepository repository;
 
   RegisterUseCase(this.repository);
@@ -56,17 +53,7 @@ class RegisterUseCase implements UseCase<AuthTokenEntity, RegisterParams> {
     // If successful, publish event for orchestrator
     result.fold(
       (failure) => null, // Do nothing on failure
-      (token) {
-        // Feature says: "registration successful"
-        // Orchestrator decides where to navigate (email verification, home, etc.)
-        EventBus.I.publish(
-          RegistrationSuccessEvent(
-            userId: token.accessToken,
-            email: params.email,
-            requiresEmailVerification: false, // TODO: Determine from response
-          ),
-        );
-      },
+      (token) => token,
     );
 
     return result;

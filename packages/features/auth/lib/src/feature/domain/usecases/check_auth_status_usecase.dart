@@ -1,9 +1,8 @@
 import 'package:auth/auth.dart';
-import 'package:dartz/dartz.dart';
-import 'package:injectable/injectable.dart';
+import 'package:core/core.dart';
 
 @injectable
-class CheckAuthStatusUseCase implements UseCase<bool, NoParams> {
+class CheckAuthStatusUseCase implements UseCase<bool, NoParams, Failure> {
   final AuthRepository repository;
 
   CheckAuthStatusUseCase(this.repository);

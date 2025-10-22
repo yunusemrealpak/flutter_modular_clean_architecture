@@ -13,7 +13,6 @@ export 'src/feature/domain/entities/user_entity.dart';
 // Domain - Repositories
 export 'src/feature/domain/repositories/auth_repository.dart';
 // Domain - Use Cases
-export 'src/feature/domain/usecases/base_usecase.dart';
 export 'src/feature/domain/usecases/check_auth_status_usecase.dart';
 export 'src/feature/domain/usecases/get_current_user_usecase.dart';
 export 'src/feature/domain/usecases/login_usecase.dart';
