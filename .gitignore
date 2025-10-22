@@ -43,3 +43,4 @@ packages/infrastructure/event_bus/.dart_tool/build/fcd1995bc647fb959e82ea360c6c2
 *.freezed.dart
 *.mocks.dart
 *.config.dart
+*.module.dart
