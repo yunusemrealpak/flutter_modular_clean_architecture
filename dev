@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Flutter Modular Clean Architecture - Development CLI
+# Main entry point for all development scripts
+
+# Get the directory where this script is located
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Execute the main CLI script
+bash "$SCRIPT_DIR/scripts/cli.sh" "$@"
