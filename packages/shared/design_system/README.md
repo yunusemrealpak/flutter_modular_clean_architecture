@@ -75,6 +75,33 @@ MaterialApp(
 - `AppTextField`: Standart text input
 - `AppCard`: Card ve header'lı card varyantları
 
+### Components
+- `AppThemeSwitch`: Tema değiştirme component'i (toggle, icon button, segmented varyantları)
+- `AppThemeSwitchTile`: Label'lı tema switcher (ListTile formatında)
+
+## Component Kullanımı
+
+Component'ler state management gerektiren UI elemanlarıdır. Callback ile kullanılır:
+
+```dart
+// Profil sayfasında
+AppThemeSwitch(
+  currentTheme: themeManager.currentTheme,  // Dışardan state
+  onThemeChanged: (mode) {
+    themeManager.setThemeMode(mode);  // Dışardan logic
+  },
+  variant: AppThemeSwitchVariant.toggle,  // toggle, iconButton, segmented
+)
+
+// ListTile versiyonu
+AppThemeSwitchTile(
+  currentTheme: themeManager.currentTheme,
+  onThemeChanged: (mode) => themeManager.setThemeMode(mode),
+  title: 'Karanlık Mod',
+  subtitle: 'Göz yorgunluğunu azaltır',
+)
+```
+
 ## Font Size Sorunları
 
 Eğer gerçek cihazlarda font size'lar çok büyük görünüyorsa, `FONT_SIZE_GUIDE.md` dosyasına bakın.
