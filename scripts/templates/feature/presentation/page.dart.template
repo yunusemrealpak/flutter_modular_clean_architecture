@@ -15,19 +15,18 @@ class {{PACKAGE_NAME_PASCAL}}Page extends StatefulWidget {
 }
 
 class _{{PACKAGE_NAME_PASCAL}}PageState extends State<{{PACKAGE_NAME_PASCAL}}Page> {
+  late final {{PACKAGE_NAME_PASCAL}}Bloc _bloc;
+
   @override
   void initState() {
     super.initState();
-    // Load initial data
-    context.read<{{PACKAGE_NAME_PASCAL}}Bloc>().add(
-          const {{PACKAGE_NAME_PASCAL}}Event.loadData(id: '1'),
-        );
+    _bloc = di<{{PACKAGE_NAME_PASCAL}}Bloc>();
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => di<{{PACKAGE_NAME_PASCAL}}Bloc>(),
+      create: (context) => _bloc..add(const {{PACKAGE_NAME_PASCAL}}Event.loadData(id: '1')),
       child: Scaffold(
         appBar: AppBar(
           title: const Text('{{PACKAGE_NAME_PASCAL}}'),

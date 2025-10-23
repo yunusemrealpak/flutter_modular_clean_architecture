@@ -1,5 +1,33 @@
 import 'package:core/core.dart';
 
-class {{PACKAGE_NAME_PASCAL}}Failure extends Failure {
-  const {{PACKAGE_NAME_PASCAL}}Failure({required super.message, super.code});
+/// Server failure
+class ServerFailure extends Failure {
+  const ServerFailure({required super.message, super.code});
+
+  @override
+  String toString() => 'ServerFailure(message: $message, code: $code)';
+}
+
+/// Network failure
+class NetworkFailure extends Failure {
+  const NetworkFailure({required super.message, super.code});
+
+  @override
+  String toString() => 'NetworkFailure(message: $message, code: $code)';
+}
+
+/// Cache failure
+class CacheFailure extends Failure {
+  const CacheFailure({required super.message, super.code});
+
+  @override
+  String toString() => 'CacheFailure(message: $message, code: $code)';
+}
+
+/// Validation failure
+class ValidationFailure extends Failure {
+  const ValidationFailure({required super.message, super.code});
+
+  @override
+  String toString() => 'ValidationFailure(message: $message, code: $code)';
 }

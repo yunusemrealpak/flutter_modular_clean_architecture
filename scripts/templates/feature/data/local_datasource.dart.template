@@ -1,4 +1,4 @@
-import 'package:injectable/injectable.dart';
+import 'package:core/core.dart';
 import 'package:storage/storage.dart';
 
 import '../models/example_model.dart';

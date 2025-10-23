@@ -1,4 +1,4 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:core/core.dart';
 
 import '../../domain/entities/example_entity.dart';
 
@@ -50,7 +50,7 @@ class ExampleModel {
 
 /// Freezed data class for JSON serialization
 @freezed
-class ExampleModelData with _$ExampleModelData {
+abstract class ExampleModelData with _$ExampleModelData {
   const factory ExampleModelData({
     required String id,
     required String name,

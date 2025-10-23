@@ -1,6 +1,4 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:injectable/injectable.dart';
+import 'package:core/core.dart';
 
 import '../../../feature/domain/entities/example_entity.dart';
 import '../../../feature/domain/usecases/get_example_data_usecase.dart';
@@ -13,7 +11,7 @@ part '{{PACKAGE_NAME}}_bloc.freezed.dart';
 ///
 /// This BLoC manages the state and events for the {{PACKAGE_NAME}} feature.
 /// It uses Freezed for immutable events and states, and Injectable for DI.
-@lazySingleton
+@injectable
 class {{PACKAGE_NAME_PASCAL}}Bloc extends Bloc<{{PACKAGE_NAME_PASCAL}}Event, {{PACKAGE_NAME_PASCAL}}State> {
   final GetExampleDataUseCase getExampleDataUseCase;
 
@@ -42,6 +40,13 @@ class {{PACKAGE_NAME_PASCAL}}Bloc extends Bloc<{{PACKAGE_NAME_PASCAL}}Event, {{P
       },
       (entity) {
         emit({{PACKAGE_NAME_PASCAL}}State.loaded(entity));
+
+        // // Note: You can send actions to the orchestrator application via event bus
+        // EventBus.I.publish(
+        //   ExampleEvent(
+        //   data: entity,
+        //   ),
+        // );
       },
     );
   }

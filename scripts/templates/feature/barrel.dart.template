@@ -1,15 +1,9 @@
-library {{PACKAGE_NAME}};
+// Core - DI
+export 'src/core/di/injection.module.dart';
 
-// Core
-export 'src/core/di/injection.dart';
-export 'src/core/route/{{PACKAGE_NAME}}_router.dart';
+// Core - Routers
+export 'src/core/route/{{PACKAGE_NAME}}_router.gr.dart';
 export 'src/core/route/{{PACKAGE_NAME}}_routes.dart';
-
-// Domain
-export 'src/feature/domain/entities/example_entity.dart';
-export 'src/feature/domain/repositories/example_repository.dart';
-export 'src/feature/domain/usecases/get_example_data_usecase.dart';
 
 // Presentation
 export 'src/feature/presentation/bloc/{{PACKAGE_NAME}}_bloc.dart';
-export 'src/feature/presentation/pages/{{PACKAGE_NAME}}_page.dart';

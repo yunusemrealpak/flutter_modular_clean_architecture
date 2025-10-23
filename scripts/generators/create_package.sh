@@ -258,6 +258,7 @@ analyzer:
     - "**/*.freezed.dart"
     - "**/*.gr.dart"
     - "**/*.config.dart"
+    - "**/*.module.dart"
   errors:
     invalid_annotation_target: ignore
 EOF
@@ -315,9 +316,10 @@ name: $package_name
 description: ${package_name_pascal} shared package
 version: 0.0.1
 publish_to: none
+resolution: workspace
 
 environment:
-  sdk: ^3.6.1
+  sdk: ^3.9.2
 
 dependencies:
   flutter:
@@ -326,7 +328,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
+  flutter_lints: any
 
 flutter:
   uses-material-design: true

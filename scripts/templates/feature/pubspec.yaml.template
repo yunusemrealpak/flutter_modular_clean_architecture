@@ -2,33 +2,17 @@ name: {{PACKAGE_NAME}}
 description: {{PACKAGE_NAME_PASCAL}} feature package
 version: 0.0.1
 publish_to: none
+resolution: workspace
 
 environment:
-  sdk: ^3.6.1
+  sdk: ^3.9.2
 
 dependencies:
   # Flutter
   flutter:
     sdk: flutter
 
-  # Routing
-  auto_route: ^9.2.2
-
-  # State Management
-  flutter_bloc: ^8.1.6
-
-  # Dependency Injection
-  get_it: ^8.0.3
-  injectable: ^2.5.0
-
-  # Functional Programming
-  dartz: ^0.10.1
-  equatable: ^2.0.7
-
-  # Code Generation
-  freezed_annotation: ^2.4.4
-  json_annotation: ^4.9.0
-
+  ## Internal Dependencies
   # Infrastructure
   network:
     path: ../../infrastructure/network
@@ -50,18 +34,18 @@ dev_dependencies:
     sdk: flutter
 
   # Linting
-  flutter_lints: ^5.0.0
+  flutter_lints: any
 
   # Code Generation
-  build_runner: ^2.4.14
-  freezed: ^2.5.7
-  json_serializable: ^6.8.0
-  injectable_generator: ^2.6.2
-  auto_route_generator: ^9.0.0
+  build_runner: any
+  freezed: any
+  json_serializable: any
+  injectable_generator: any
+  auto_route_generator: any
 
   # Testing
-  bloc_test: ^9.1.7
-  mocktail: ^1.0.4
+  bloc_test: any
+  mocktail: any
 
 flutter:
   uses-material-design: true

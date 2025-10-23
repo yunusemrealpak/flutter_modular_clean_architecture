@@ -1,4 +1,4 @@
-import 'package:equatable/equatable.dart';
+import 'package:core/core.dart';
 
 /// Example entity for {{PACKAGE_NAME_PASCAL}} feature
 ///
@@ -27,7 +27,7 @@ class ExampleEntity extends Equatable {
     required this.description,
     required this.createdAt,
     this.updatedAt,
-  });
+  }) : assert(name.isNotEmpty, 'Name cannot be empty');
 
   /// Business logic: Check if entity was created recently (within last 7 days)
   bool get isRecent {
@@ -48,4 +48,18 @@ class ExampleEntity extends Equatable {
 
   @override
   bool get stringify => true;
+
+  ExampleEntity copyWith({
+    String? name,
+    String? description,
+    DateTime? updatedAt,
+  }) {
+    return ExampleEntity(
+      id: id,
+      name: name ?? this.name,
+      description: description ?? this.description,
+      createdAt: createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+    );
+  }
 }

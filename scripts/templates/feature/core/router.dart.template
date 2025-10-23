@@ -1,4 +1,4 @@
-import 'package:auto_route/auto_route.dart';
+import 'package:core/core.dart';
 
 import 'router.gr.dart';
 
@@ -6,9 +6,7 @@ import 'router.gr.dart';
   replaceInRouteName: 'Page,Route',
 )
 class {{PACKAGE_NAME_PASCAL}}Router extends RootStackRouter {
+  /// Routes will be configured in the orchestrator app.
   @override
-  List<AutoRoute> get routes => [
-        // Define your routes here
-        // Example: AutoRoute(page: SomeRoute.page, initial: true),
-      ];
+  List<AutoRoute> get routes => [];
 }
