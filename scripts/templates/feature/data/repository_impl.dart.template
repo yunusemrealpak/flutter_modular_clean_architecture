@@ -1,4 +1,5 @@
 import 'package:core/core.dart';
+import 'package:{{PACKAGE_NAME}}/src/core/errors/failures.dart';
 import 'package:network/network.dart';
 
 import '../../domain/entities/example_entity.dart';

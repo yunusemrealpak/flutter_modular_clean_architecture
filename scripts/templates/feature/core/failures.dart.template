@@ -31,3 +31,11 @@ class ValidationFailure extends Failure {
   @override
   String toString() => 'ValidationFailure(message: $message, code: $code)';
 }
+
+// Unknown Failure
+class UnknownFailure extends Failure {
+  const UnknownFailure({required super.message, super.code});
+
+  @override
+  String toString() => 'UnknownFailure(message: $message, code: $code)';
+}
