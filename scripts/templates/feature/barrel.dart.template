@@ -1,9 +1,0 @@
-// Core - DI
-export 'src/core/di/injection.module.dart';
-
-// Core - Routers
-export 'src/core/route/{{PACKAGE_NAME}}_router.gr.dart';
-export 'src/core/route/{{PACKAGE_NAME}}_routes.dart';
-
-// Presentation
-export 'src/feature/presentation/bloc/{{PACKAGE_NAME}}_bloc.dart';
