@@ -1,11 +1,10 @@
 import 'package:core/core.dart';
 
-import '../../../core/errors/failures.dart';
 import '../entities/user_entity.dart';
 import '../repositories/auth_repository.dart';
 
 @injectable
-class GetCurrentUserUseCase implements UseCase<UserEntity, NoParams, Failure> {
+class GetCurrentUserUseCase implements UseCase<UserEntity, NoParams> {
   final AuthRepository repository;
 
   GetCurrentUserUseCase(this.repository);

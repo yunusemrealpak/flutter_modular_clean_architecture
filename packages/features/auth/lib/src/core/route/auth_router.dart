@@ -2,7 +2,7 @@ import 'package:core/core.dart';
 
 @AutoRouterConfig(replaceInRouteName: 'Page|View,Route')
 class AuthRouter extends RootStackRouter {
-  /// Route'lar orchectrator app'te ayarlanacak.
+  /// Routes will be configured in the orchestrator app.
   @override
   final List<AutoRoute> routes = [];
 }

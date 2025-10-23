@@ -5,7 +5,7 @@ import '../entities/auth_token_entity.dart';
 import '../repositories/auth_repository.dart';
 
 @injectable
-class LoginUseCase implements UseCase<AuthTokenEntity, LoginParams, Failure> {
+class LoginUseCase implements UseCase<AuthTokenEntity, LoginParams> {
   final AuthRepository repository;
 
   LoginUseCase(this.repository);

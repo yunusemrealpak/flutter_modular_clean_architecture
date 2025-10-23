@@ -1,6 +1,5 @@
-import 'package:dartz/dartz.dart';
+import 'package:core/core.dart';
 import 'package:event_bus/event_bus.dart';
-import 'package:injectable/injectable.dart';
 import 'package:network/network.dart';
 
 import '../../../core/errors/failures.dart';

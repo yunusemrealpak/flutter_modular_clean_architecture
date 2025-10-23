@@ -1,6 +1,5 @@
-import 'package:dartz/dartz.dart';
+import 'package:core/core.dart';
 
-import '../../../core/errors/failures.dart';
 import '../entities/auth_token_entity.dart';
 import '../entities/user_entity.dart';
 

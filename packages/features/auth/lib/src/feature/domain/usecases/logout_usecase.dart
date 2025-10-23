@@ -1,10 +1,9 @@
 import 'package:core/core.dart';
 
-import '../../../core/errors/failures.dart';
 import '../repositories/auth_repository.dart';
 
 @injectable
-class LogoutUseCase implements UseCase<Unit, NoParams, Failure> {
+class LogoutUseCase implements UseCase<Unit, NoParams> {
   final AuthRepository repository;
 
   LogoutUseCase(this.repository);
