@@ -1,7 +1,7 @@
 import 'package:app_shell/app_shell.dart';
 import 'package:auth/auth.dart';
-import 'package:home/src/core/route/home_routes.dart';
-import 'package:profile/core/route/profile_routes.dart';
+import 'package:home/home.dart';
+import 'package:profile/profile.dart';
 
 class AppRoutes {
   static AppShellRoutes get app => AppShellRoutes();

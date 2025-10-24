@@ -1,8 +1,8 @@
 import 'package:app_shell/app_shell.dart';
 import 'package:auth/auth.dart';
 import 'package:core/core.dart';
-import 'package:home/src/core/route/home_router.gr.dart';
-import 'package:profile/core/route/profile_router.gr.dart';
+import 'package:home/home.dart';
+import 'package:profile/profile.dart';
 import 'package:root/core/route/app_routes.dart';
 
 @AutoRouterConfig(replaceInRouteName: 'Page|View,Route')
