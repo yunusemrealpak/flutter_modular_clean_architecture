@@ -4,33 +4,33 @@
   "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
   "entities": [
     {
-      "id": "1:2712729777245706162",
-      "lastPropertyId": "7:3423645180672015746",
+      "id": "1:4857293274395081852",
+      "lastPropertyId": "5:743253304844593795",
       "name": "AuthTokenDbModel",
       "properties": [
         {
-          "id": "1:4997390862191643862",
+          "id": "1:3593826105351866386",
           "name": "id",
           "type": 6,
           "flags": 1
         },
         {
-          "id": "4:2734880067869259978",
+          "id": "2:1016671053638685135",
           "name": "accessToken",
           "type": 9
         },
         {
-          "id": "5:5661381484644790081",
+          "id": "3:5864536424047226302",
           "name": "refreshToken",
           "type": 9
         },
         {
-          "id": "6:3649255620903566131",
+          "id": "4:4238055032998505017",
           "name": "issuedAt",
           "type": 10
         },
         {
-          "id": "7:3423645180672015746",
+          "id": "5:743253304844593795",
           "name": "expiresIn",
           "type": 6
         }
@@ -38,18 +38,18 @@
       "relations": []
     },
     {
-      "id": "2:2585270639555560155",
-      "lastPropertyId": "2:3208359665074233720",
+      "id": "2:4882111053586235512",
+      "lastPropertyId": "2:7869552578864681834",
       "name": "SettingsDbModel",
       "properties": [
         {
-          "id": "1:1753892141565787314",
+          "id": "1:3617234641316511759",
           "name": "id",
           "type": 6,
           "flags": 1
         },
         {
-          "id": "2:3208359665074233720",
+          "id": "2:7869552578864681834",
           "name": "themeMode",
           "type": 9
         }
@@ -57,7 +57,7 @@
       "relations": []
     }
   ],
-  "lastEntityId": "2:2585270639555560155",
+  "lastEntityId": "2:4882111053586235512",
   "lastIndexId": "0:0",
   "lastRelationId": "0:0",
   "lastSequenceId": "0:0",
@@ -65,10 +65,7 @@
   "modelVersionParserMinimum": 5,
   "retiredEntityUids": [],
   "retiredIndexUids": [],
-  "retiredPropertyUids": [
-    954082925542205174,
-    8904617148721647372
-  ],
+  "retiredPropertyUids": [],
   "retiredRelationUids": [],
   "version": 1
 }

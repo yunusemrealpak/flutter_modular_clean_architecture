@@ -1,3 +1,5 @@
+library;
+
 // DI
 export 'src/core/di/injection.module.dart';
 export 'src/feature/domain/entity/session_data.dart';

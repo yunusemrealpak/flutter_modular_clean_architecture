@@ -1,5 +1,5 @@
 import 'package:config/config.dart';
-import 'package:injectable/injectable.dart';
+import 'package:core/core.dart';
 import 'package:network/network.dart';
 
 import '../models/auth_response_model.dart';

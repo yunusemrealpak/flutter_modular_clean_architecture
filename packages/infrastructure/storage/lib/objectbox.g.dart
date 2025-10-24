@@ -21,37 +21,37 @@ export 'package:objectbox/objectbox.dart'; // so that callers only have to impor
 
 final _entities = <obx_int.ModelEntity>[
   obx_int.ModelEntity(
-    id: const obx_int.IdUid(1, 2712729777245706162),
+    id: const obx_int.IdUid(1, 4857293274395081852),
     name: 'AuthTokenDbModel',
-    lastPropertyId: const obx_int.IdUid(7, 3423645180672015746),
+    lastPropertyId: const obx_int.IdUid(5, 743253304844593795),
     flags: 0,
     properties: <obx_int.ModelProperty>[
       obx_int.ModelProperty(
-        id: const obx_int.IdUid(1, 4997390862191643862),
+        id: const obx_int.IdUid(1, 3593826105351866386),
         name: 'id',
         type: 6,
         flags: 1,
       ),
       obx_int.ModelProperty(
-        id: const obx_int.IdUid(4, 2734880067869259978),
+        id: const obx_int.IdUid(2, 1016671053638685135),
         name: 'accessToken',
         type: 9,
         flags: 0,
       ),
       obx_int.ModelProperty(
-        id: const obx_int.IdUid(5, 5661381484644790081),
+        id: const obx_int.IdUid(3, 5864536424047226302),
         name: 'refreshToken',
         type: 9,
         flags: 0,
       ),
       obx_int.ModelProperty(
-        id: const obx_int.IdUid(6, 3649255620903566131),
+        id: const obx_int.IdUid(4, 4238055032998505017),
         name: 'issuedAt',
         type: 10,
         flags: 0,
       ),
       obx_int.ModelProperty(
-        id: const obx_int.IdUid(7, 3423645180672015746),
+        id: const obx_int.IdUid(5, 743253304844593795),
         name: 'expiresIn',
         type: 6,
         flags: 0,
@@ -61,19 +61,19 @@ final _entities = <obx_int.ModelEntity>[
     backlinks: <obx_int.ModelBacklink>[],
   ),
   obx_int.ModelEntity(
-    id: const obx_int.IdUid(2, 2585270639555560155),
+    id: const obx_int.IdUid(2, 4882111053586235512),
     name: 'SettingsDbModel',
-    lastPropertyId: const obx_int.IdUid(2, 3208359665074233720),
+    lastPropertyId: const obx_int.IdUid(2, 7869552578864681834),
     flags: 0,
     properties: <obx_int.ModelProperty>[
       obx_int.ModelProperty(
-        id: const obx_int.IdUid(1, 1753892141565787314),
+        id: const obx_int.IdUid(1, 3617234641316511759),
         name: 'id',
         type: 6,
         flags: 1,
       ),
       obx_int.ModelProperty(
-        id: const obx_int.IdUid(2, 3208359665074233720),
+        id: const obx_int.IdUid(2, 7869552578864681834),
         name: 'themeMode',
         type: 9,
         flags: 0,
@@ -122,13 +122,13 @@ Future<obx.Store> openStore({
 obx_int.ModelDefinition getObjectBoxModel() {
   final model = obx_int.ModelInfo(
     entities: _entities,
-    lastEntityId: const obx_int.IdUid(2, 2585270639555560155),
+    lastEntityId: const obx_int.IdUid(2, 4882111053586235512),
     lastIndexId: const obx_int.IdUid(0, 0),
     lastRelationId: const obx_int.IdUid(0, 0),
     lastSequenceId: const obx_int.IdUid(0, 0),
     retiredEntityUids: const [],
     retiredIndexUids: const [],
-    retiredPropertyUids: const [954082925542205174, 8904617148721647372],
+    retiredPropertyUids: const [],
     retiredRelationUids: const [],
     modelVersion: 5,
     modelVersionParserMinimum: 5,
@@ -147,12 +147,12 @@ obx_int.ModelDefinition getObjectBoxModel() {
       objectToFB: (AuthTokenDbModel object, fb.Builder fbb) {
         final accessTokenOffset = fbb.writeString(object.accessToken);
         final refreshTokenOffset = fbb.writeString(object.refreshToken);
-        fbb.startTable(8);
+        fbb.startTable(6);
         fbb.addInt64(0, object.id);
-        fbb.addOffset(3, accessTokenOffset);
-        fbb.addOffset(4, refreshTokenOffset);
-        fbb.addInt64(5, object.issuedAt.millisecondsSinceEpoch);
-        fbb.addInt64(6, object.expiresIn);
+        fbb.addOffset(1, accessTokenOffset);
+        fbb.addOffset(2, refreshTokenOffset);
+        fbb.addInt64(3, object.issuedAt.millisecondsSinceEpoch);
+        fbb.addInt64(4, object.expiresIn);
         fbb.finish(fbb.endTable());
         return object.id;
       },
@@ -161,19 +161,19 @@ obx_int.ModelDefinition getObjectBoxModel() {
         final rootOffset = buffer.derefObject(0);
         final accessTokenParam = const fb.StringReader(
           asciiOptimization: true,
-        ).vTableGet(buffer, rootOffset, 10, '');
+        ).vTableGet(buffer, rootOffset, 6, '');
         final issuedAtParam = DateTime.fromMillisecondsSinceEpoch(
-          const fb.Int64Reader().vTableGet(buffer, rootOffset, 14, 0),
+          const fb.Int64Reader().vTableGet(buffer, rootOffset, 10, 0),
         );
         final expiresInParam = const fb.Int64Reader().vTableGet(
           buffer,
           rootOffset,
-          16,
+          12,
           0,
         );
         final refreshTokenParam = const fb.StringReader(
           asciiOptimization: true,
-        ).vTableGet(buffer, rootOffset, 12, '');
+        ).vTableGet(buffer, rootOffset, 8, '');
         final object = AuthTokenDbModel(
           accessToken: accessTokenParam,
           issuedAt: issuedAtParam,

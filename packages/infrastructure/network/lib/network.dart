@@ -1,3 +1,5 @@
+library;
+
 // Export Dio for external use
 // Export connectivity_plus for external use
 export 'package:connectivity_plus/connectivity_plus.dart'

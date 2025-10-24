@@ -187,7 +187,7 @@ class AuthRepositoryImpl implements AuthRepository {
       await localDataSource.saveAuthToken(tokenModel);
 
       return Right(tokenModel.toEntity());
-    } on UnauthorizedException catch (e) {
+    } on UnauthorizedException catch (_) {
       // Clear local data if refresh token is invalid
       await localDataSource.clearAuthData();
 

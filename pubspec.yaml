@@ -9,7 +9,6 @@ workspace:
   - packages/features/profile
   - packages/features/auth
   - packages/features/app_shell
-  - packages/features/product
 
   - packages/shared/assets
   - packages/shared/config
